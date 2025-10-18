@@ -1,0 +1,22 @@
+{
+  "name": "ggr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chloewychan/GGR.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chloewychan/GGR/issues"
+  },
+  "homepage": "https://github.com/chloewychan/GGR#readme",
+  "dependencies": {
+    "typescript": "^5.9.3"
+  }
+}
