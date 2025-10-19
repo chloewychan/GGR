@@ -10,7 +10,7 @@ const STRING_1 = {
     fret: 0,
     tab: '|',
     strum: (fret) => {
-        audios[1][fret].play().catch((error) => {
+        audios[0][fret].play().catch((error) => {
             console.error("Playback failed:", error);
         });
         STRING_1.tab += `--${fret}`;
@@ -24,7 +24,7 @@ const STRING_2 = {
     fret: 0,
     tab: '|',
     strum: (fret) => {
-        audios[2][fret].play().catch((error) => {
+        audios[1][fret].play().catch((error) => {
             console.error("Playback failed:", error);
         });
         STRING_2.tab += `--${fret}`;
@@ -38,7 +38,7 @@ const STRING_3 = {
     fret: 0,
     tab: '|',
     strum: (fret) => {
-        audios[3][fret].play().catch((error) => {
+        audios[2][fret].play().catch((error) => {
             console.error("Playback failed:", error);
         });
         STRING_3.tab += `--${fret}`;
@@ -52,7 +52,7 @@ const STRING_4 = {
     fret: 0,
     tab: '|',
     strum: (fret) => {
-        audios[4][fret].play().catch((error) => {
+        audios[3][fret].play().catch((error) => {
             console.error("Playback failed:", error);
         });
         STRING_4.tab += `--${fret}`;
@@ -79,53 +79,53 @@ function levelTab() {
 }
 const audios = [
     [
-        new Audio("./audio/g0.mp3"),
-        new Audio("./audio/g1.mp3"),
-        new Audio("./audio/g2.mp3"),
-        new Audio("./audio/g3.mp3"),
-        new Audio("./audio/g4.mp3"),
-        new Audio("./audio/g5.mp3"),
-        new Audio("./audio/g6.mp3"),
-        new Audio("./audio/g7.mp3"),
-        new Audio("./audio/g8.mp3"),
-        new Audio("./audio/g9.mp3"),
+        new Audio("../audio/A0.m4a"),
+        new Audio("../audio/A1.m4a"),
+        new Audio("../audio/A2.m4a"),
+        new Audio("../audio/A3.m4a"),
+        new Audio("../audio/A4.m4a"),
+        new Audio("../audio/A5.m4a"),
+        new Audio("../audio/A6.m4a"),
+        new Audio("../audio/A7.m4a"),
+        new Audio("../audio/A8.m4a"),
+        new Audio("../audio/A9.m4a"),
     ],
     [
-        new Audio("./audio/c0.mp3"),
-        new Audio("./audio/c1.mp3"),
-        new Audio("./audio/c2.mp3"),
-        new Audio("./audio/c3.mp3"),
-        new Audio("./audio/c4.mp3"),
-        new Audio("./audio/c5.mp3"),
-        new Audio("./audio/c6.mp3"),
-        new Audio("./audio/c7.mp3"),
-        new Audio("./audio/c8.mp3"),
-        new Audio("./audio/c9.mp3"),
+        new Audio("../audio/E0.m4a"),
+        new Audio("../audio/E1.m4a"),
+        new Audio("../audio/E2.m4a"),
+        new Audio("../audio/E3.m4a"),
+        new Audio("../audio/E4.m4a"),
+        new Audio("../audio/E5.m4a"),
+        new Audio("../audio/E6.m4a"),
+        new Audio("../audio/E7.m4a"),
+        new Audio("../audio/E8.m4a"),
+        new Audio("../audio/E9.m4a"),
     ],
     [
-        new Audio("./audio/e0.mp3"),
-        new Audio("./audio/e1.mp3"),
-        new Audio("./audio/e2.mp3"),
-        new Audio("./audio/e3.mp3"),
-        new Audio("./audio/e4.mp3"),
-        new Audio("./audio/e5.mp3"),
-        new Audio("./audio/e6.mp3"),
-        new Audio("./audio/e7.mp3"),
-        new Audio("./audio/e8.mp3"),
-        new Audio("./audio/e9.mp3"),
+        new Audio("../audio/C0.m4a"),
+        new Audio("../audio/C1.m4a"),
+        new Audio("../audio/C2.m4a"),
+        new Audio("../audio/C3.m4a"),
+        new Audio("../audio/C4.m4a"),
+        new Audio("../audio/C5.m4a"),
+        new Audio("../audio/C6.m4a"),
+        new Audio("../audio/C7.m4a"),
+        new Audio("../audio/C8.m4a"),
+        new Audio("../audio/C9.m4a"),
     ],
     [
-        new Audio("./audio/a0.mp3"),
-        new Audio("./audio/a1.mp3"),
-        new Audio("./audio/a2.mp3"),
-        new Audio("./audio/a3.mp3"),
-        new Audio("./audio/a4.mp3"),
-        new Audio("./audio/a5.mp3"),
-        new Audio("./audio/a6.mp3"),
-        new Audio("./audio/a7.mp3"),
-        new Audio("./audio/a8.mp3"),
-        new Audio("./audio/a9.mp3"),
-    ]
+        new Audio("../audio/G0.m4a"),
+        new Audio("../audio/G1.m4a"),
+        new Audio("../audio/G2.m4a"),
+        new Audio("../audio/G3.m4a"),
+        new Audio("../audio/G4.m4a"),
+        new Audio("../audio/G5.m4a"),
+        new Audio("../audio/G6.m4a"),
+        new Audio("../audio/G7.m4a"),
+        new Audio("../audio/G8.m4a"),
+        new Audio("../audio/G9.m4a"),
+    ],
 ];
 let isMouseDown = false;
 function getMouseCoords(event) {
