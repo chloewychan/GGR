@@ -1,12 +1,13 @@
 "use strict";
 const CANVAS_UKULELE = document.getElementById('canvas-ukulele');
 const P_TABS = document.getElementById('p-tabs');
+const IMG_UKULELE = document.getElementById('img-ukulele');
 // Red rectangle coordinates and dimensions
 const STRING_1 = {
-    x: 400,
-    y: 100,
+    x: 450,
+    y: 170,
     width: 300,
-    height: 50,
+    height: 23,
     fret: 0,
     tab: '|',
     strum: (fret) => {
@@ -17,10 +18,10 @@ const STRING_1 = {
     }
 };
 const STRING_2 = {
-    x: 400,
-    y: 150,
+    x: 450,
+    y: 193,
     width: 300,
-    height: 50,
+    height: 23,
     fret: 0,
     tab: '|',
     strum: (fret) => {
@@ -31,10 +32,10 @@ const STRING_2 = {
     }
 };
 const STRING_3 = {
-    x: 400,
-    y: 200,
+    x: 450,
+    y: 216,
     width: 300,
-    height: 50,
+    height: 23,
     fret: 0,
     tab: '|',
     strum: (fret) => {
@@ -45,10 +46,10 @@ const STRING_3 = {
     }
 };
 const STRING_4 = {
-    x: 400,
-    y: 250,
+    x: 450,
+    y: 239,
     width: 300,
-    height: 50,
+    height: 23,
     fret: 0,
     tab: '|',
     strum: (fret) => {
@@ -77,6 +78,7 @@ function levelTab() {
     ${STRING_3.tab}
     ${STRING_4.tab}`;
 }
+// audio files found in this Google Drive link: https://drive.google.com/drive/folders/1cJSK0jtXuQZE_C63SuF6PsKBtmzBNdq5?usp=sharing
 const audios = [
     [
         new Audio("../audio/A0.m4a"),
@@ -186,13 +188,50 @@ function main() {
         throw new Error('Could not get context');
     }
     levelTab();
+    // Draw ukulele image - scale it to fit canvas and draw last so it's on top
+    const drawUkuleleImage = () => {
+        try {
+            // Scale the image to fit the canvas (800x400)
+            const canvasWidth = CANVAS_UKULELE.width;
+            const canvasHeight = CANVAS_UKULELE.height;
+            const imageWidth = IMG_UKULELE.naturalWidth;
+            const imageHeight = IMG_UKULELE.naturalHeight;
+            // Calculate scale to fit image in canvas while maintaining aspect ratio
+            const scale = Math.min(canvasWidth / imageWidth, canvasHeight / imageHeight);
+            const scaledWidth = imageWidth * scale + 200;
+            const scaledHeight = imageHeight * scale + 200;
+            // Center the image
+            const x = (canvasWidth - scaledWidth) / 2;
+            const y = (canvasHeight - scaledHeight) / 2;
+            ctx.drawImage(IMG_UKULELE, x, y, scaledWidth, scaledHeight);
+            console.log(`Drew ukulele image at (${x}, ${y}) with size ${scaledWidth}x${scaledHeight}`);
+        }
+        catch (error) {
+            console.error('Error drawing ukulele image:', error);
+        }
+    };
+    // Check if image is already loaded
+    if (IMG_UKULELE.complete && IMG_UKULELE.naturalWidth > 0) {
+        drawUkuleleImage();
+    }
+    else {
+        // Set up onload handler
+        IMG_UKULELE.onload = () => {
+            console.log('Image loaded, drawing now');
+            drawUkuleleImage();
+        };
+        // Also set up onerror handler to catch loading issues
+        IMG_UKULELE.onerror = () => {
+            console.error('Failed to load ukulele image');
+        };
+    }
     // Draw rectangles
-    ctx.strokeStyle = "gray";
-    ctx.lineWidth = 2;
-    ctx.strokeRect(STRING_1.x, STRING_1.y, STRING_1.width, STRING_1.height);
-    ctx.strokeRect(STRING_2.x, STRING_2.y, STRING_2.width, STRING_2.height);
-    ctx.strokeRect(STRING_3.x, STRING_3.y, STRING_3.width, STRING_3.height);
-    ctx.strokeRect(STRING_4.x, STRING_4.y, STRING_4.width, STRING_4.height);
+    // ctx.strokeStyle = "gray";
+    // ctx.lineWidth = 2;
+    // ctx.strokeRect(STRING_1.x, STRING_1.y, STRING_1.width, STRING_1.height);
+    // ctx.strokeRect(STRING_2.x, STRING_2.y, STRING_2.width, STRING_2.height);
+    // ctx.strokeRect(STRING_3.x, STRING_3.y, STRING_3.width, STRING_3.height);
+    // ctx.strokeRect(STRING_4.x, STRING_4.y, STRING_4.width, STRING_4.height);
     // Create string handler for the red rectangle
     const stringHandler1 = createStringHandler(STRING_1);
     const stringHandler2 = createStringHandler(STRING_2);
@@ -365,5 +404,19 @@ function main() {
         STRING_3.fret = 0;
         STRING_4.fret = 0;
     });
+}
+function saveTextAsFile(filename, content) {
+    const blob = new Blob([content], { type: "text/plain" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+    URL.revokeObjectURL(link.href); // optional cleanup
+}
+function saveTabs() {
+    saveTextAsFile("guitar-guitar-revolution-tabs.txt", `${STRING_1.tab}
+        ${STRING_2.tab}
+        ${STRING_3.tab}
+        ${STRING_4.tab})`);
 }
 //# sourceMappingURL=main.js.map
