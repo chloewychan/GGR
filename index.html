@@ -7,10 +7,22 @@
 </head>
 <body onload="main()">
     <h1>Guitar Guitar Revolution</h1>
-    <div id="div-container">
-        <canvas id="canvas-ukulele"></canvas>
+
+    <div id="div-buttons">
+        <button type="button" id="btn-start-recording" onclick="startRecording();">Start Recording</button>
+        <button type="button" id="btn-stop-recording" onclick="stopRecording();">Stop Recording</button>
     </div>
 
-    <script src="dist/index.js"></script>
+    <br>
+
+    <div id="div-container">
+        <canvas id="canvas-ukulele"></canvas>
+        <div id="div-spacer"></div>
+        <div id="div-tabs">
+            <p id="p-tabs"></p>
+        </div>
+    </div>
+
+    <script src="dist/main.js"></script>
 </body>
 </html>

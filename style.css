@@ -16,14 +16,33 @@ h1 {
 }
 
 #div-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
+    display: block;
 }
 
 #canvas-ukulele {
     border: 2px solid #333;
     background-color: #000;
     border-radius: 8px;
+    padding: 10px;
+}
+
+#div-spacer {
+    border: none;
+    background-color: none;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+#div-tabs {
+    width: 800px;
+    border: 2px solid #333;
+    background-color: #000;
+    border-radius: 8px;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+#p-tabs {
+    font-family: 'Courier New', Courier, monospace;
+    white-space: nowrap;
 }

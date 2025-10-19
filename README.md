@@ -1,1 +1,1 @@
-# GGR
+# Guitar Guitar Revolution
